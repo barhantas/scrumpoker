@@ -12,7 +12,9 @@ services:
     ports:
       - "8000:8000"
       - "8810:8810"
-    command: npm start
+    command: >
+      sh -c "npm i &&
+             npm start"
   client:
     build:
       context: ./client/

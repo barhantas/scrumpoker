@@ -1,7 +1,7 @@
 {
-  "name": "pinad",
+  "name": "scrumpoker",
   "version": "0.0.1",
-  "description": "pinad node server",
+  "description": "scrumpoker node server",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",

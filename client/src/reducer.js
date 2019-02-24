@@ -22,9 +22,8 @@ export default (state = initialState, action) => {
     case actionTypes.LOAD_SPRINT:
       return { ...state, sprintLoading: true };
     case actionTypes.SPRINT_LOADED:
-      const activeStory = action.sprint.stories.find(
-        (story) => story.status === 'Active'
-      );
+      const activeStory =
+        action.sprint.stories.find((story) => story.status === 'Active') || {};
       return {
         ...state,
         sprint: action.sprint,
@@ -51,7 +50,6 @@ export default (state = initialState, action) => {
     case actionTypes.CREATE_ESTIMATION:
       return { ...state, estimationCreating: true };
     case actionTypes.ESTIMATION_CREATED:
-      console.log(action);
       return {
         ...state,
         estimationCreating: false,
@@ -93,6 +91,11 @@ export default (state = initialState, action) => {
         ...state,
         isScrumMaster: false,
         scrumMasterEstimation: undefined,
+      };
+    case actionTypes.CLEAR_STATE:
+      return {
+        ...initialState,
+        allSprints: [...state.allSprints],
       };
     default:
       return state;

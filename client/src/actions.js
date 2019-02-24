@@ -51,3 +51,7 @@ export const iamScrumMaster = () => {
 export const iamDeveloper = () => {
   return { type: actionTypes.I_AM_DEVELOPER };
 };
+
+export const clearState = () => {
+  return { type: actionTypes.CLEAR_STATE };
+};

@@ -38,6 +38,7 @@ body {
       }
     }
     .story-list-table {
+      pointer-events: none;
       .ant-table-tbody {
         color: white;
       }
