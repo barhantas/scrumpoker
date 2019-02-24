@@ -2,6 +2,11 @@
 
 A simple example of scrum poker planning app
 
+## #Docker
+
+run docker-compose up
+
+#Manuel
 Docker ---> Mongodb
 
 --> client

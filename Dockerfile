@@ -1,8 +1,26 @@
-FROM node:10
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY package.json /usr/src/app/
-RUN npm install
-COPY . /usr/src/app
+FROM node:9.4.0-alpine as client
+
+WORKDIR /usr/app/client/
+COPY client/package*.json ./
+RUN npm install -qy
+COPY client/ ./
+RUN npm run build
+
+
+# Setup the server
+
+FROM node:9.4.0-alpine
+
+WORKDIR /usr/app/
+COPY --from=client /usr/app/client/build/ ./client/build/
+
+WORKDIR /usr/app/server/
+COPY server/package*.json ./
+RUN npm install -qy
+COPY server/ ./
+
+ENV PORT 8000
+
 EXPOSE 8000
+
 CMD ["npm", "start"]

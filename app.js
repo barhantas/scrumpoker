@@ -22,8 +22,8 @@ routes(app);
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb://localhost/scrumpokerdb", { useNewUrlParser: true });
+mongoose.connect("mongodb://mongo/scrumpokerdb", { useNewUrlParser: true });
 
 app.listen(port);
 
-console.log("RESTful API server started on: " + port);
+console.log("scrum-poker server started on: " + port);

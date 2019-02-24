@@ -1,15 +1,30 @@
 version: "3"
 services:
   app:
-    container_name: app
-    restart: always
-    build: .
+    image: node:alpine
+    volumes:
+      - ./:/app
+    working_dir: /app
+    depends_on:
+      - mongo
+    environment:
+      NODE_ENV: development
     ports:
       - "8000:8000"
-    links:
-      - mongo
+    command: npm start
+  client:
+    build:
+      context: ./client/
+    command: npm start
+    volumes:
+      - ./client/:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - app
+    ports:
+      - "3000:3000"
   mongo:
-    container_name: pinad-mongo
+    container_name: scrum-poker-mongo
     image: mongo
     volumes:
       - ./data:/data/db
