@@ -14,16 +14,15 @@ import {
 
 class ScrumAdmin extends React.Component {
   componentDidMount() {
-    const { captureStoryUpdate, activeStoryId } = this.props;
+    const { captureStoryUpdate, sprint } = this.props;
     const socket = io(SOCKET_URL);
 
-    socket.on('connect', () => {
-      //console.log('hi');
-    });
-    socket.on('story=' + activeStoryId, (story) => {
+    socket.on('connect', () => {});
+    socket.on('story-channel=' + sprint._id, (story) => {
       console.log(story);
       captureStoryUpdate(story);
     });
+
     socket.on('estimation', (estimation) => {
       console.log(estimation);
       captureEstimationUpdate(estimation);
@@ -52,11 +51,12 @@ ScrumAdmin.propTypes = {
   activeStoryId: PropTypes.string,
   captureStoryUpdate: PropTypes.func,
   loadSprint: PropTypes.func,
+  sprint: PropTypes.object,
 };
 
 const mapStateToProps = (state) => {
   return {
-    activeStoryId: state.rootReducer.activeStoryId,
+    sprint: state.rootReducer.sprint,
   };
 };
 

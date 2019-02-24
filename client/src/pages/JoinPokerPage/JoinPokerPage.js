@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Form, Button, Input } from 'antd';
-import io from 'socket.io-client';
-import { SOCKET_URL } from '../../constants';
 import { loadSprint, iamDeveloper } from '../../actions';
 import ScrumAdmin from '../../components/ScrumAdmin';
 
@@ -19,14 +17,6 @@ class JoinPokerPage extends React.Component {
       if (!err) {
         loadSprint(values.sessionId);
         //form.resetFields();
-        const socket = io(SOCKET_URL);
-
-        socket.on('connect', () => {
-          //console.log('hi');
-        });
-        socket.on('message', (message) => {
-          //console.log(message.context);
-        });
       }
     });
   };

@@ -51,7 +51,7 @@ exports.finishStoryVoting = (req, res) => {
             res.status(400);
             res.send(err);
           }
-          io.emit("story", story);
+          io.emit("story-channel=" + sprintId, story);
         }
       );
     }
@@ -65,7 +65,7 @@ exports.finishStoryVoting = (req, res) => {
             res.status(400);
             res.send(err);
           }
-          io.emit("story", story);
+          io.emit("story-channel=" + sprintId, story);
           res.json(story);
         }
       );
@@ -76,9 +76,9 @@ exports.finishStoryVoting = (req, res) => {
 };
 
 exports.createEstimation = (req, res) => {
+  const sprintId = req.body.sprintId;
   const storyId = req.body.story;
   const value = req.body.value;
-
   Story.findByIdAndUpdate(storyId, {}, { new: true }, async (err, story) => {
     if (err) res.send(err);
     const estimation = new Estimation({
@@ -97,7 +97,7 @@ exports.createEstimation = (req, res) => {
         res.send(err);
       }
       story.estimations = [...estimations];
-      io.emit("story=" + storyId, story);
+      io.emit("story-channel=" + sprintId, story);
       res.json(story);
     });
   });

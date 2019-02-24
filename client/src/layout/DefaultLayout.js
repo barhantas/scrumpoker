@@ -10,28 +10,8 @@ import DefaultContent from './components/DefaultContent';
 import DefaultHeader from './components/DefaultHeader';
 import DefaultSider from './components/DefaultSider';
 import NotFoundPage from '../pages/NotFoundPage';
-import io from 'socket.io-client';
-import { SOCKET_URL } from '../constants';
-import { captureStoryUpdate, captureEstimationUpdate } from '../actions';
 
 class DefaultLayout extends React.Component {
-  componentDidMount() {
-    const { captureStoryUpdate } = this.props;
-    const socket = io(SOCKET_URL);
-
-    socket.on('connect', () => {
-      //console.log('hi');
-    });
-    socket.on('story', (story) => {
-      console.log(story);
-      captureStoryUpdate(story);
-    });
-    socket.on('estimation', (estimation) => {
-      console.log(estimation);
-      captureEstimationUpdate(estimation);
-    });
-  }
-
   render() {
     return (
       <BrowserRouter>
@@ -68,17 +48,13 @@ class DefaultLayout extends React.Component {
   }
 }
 
-DefaultLayout.propTypes = {
-  captureStoryUpdate: PropTypes.func,
-};
+DefaultLayout.propTypes = {};
 
 const mapStateToProps = (state) => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  captureStoryUpdate: (story) => dispatch(captureStoryUpdate(story)),
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(
   mapStateToProps,

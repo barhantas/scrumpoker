@@ -35,6 +35,7 @@ export function* createEstimation(action) {
   const estimationInstance = new Estimation({
     value: action.value,
     story: activeStory._id,
+    sprintId: activeStory.sprint,
   });
   const res = yield call(() =>
     estimationInstance
