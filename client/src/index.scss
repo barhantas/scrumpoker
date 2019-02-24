@@ -12,15 +12,19 @@ body {
 
 .my-page-layout {
   margin: 5%;
-  color: black;
   background: white;
   .my-form-layout {
+    color: black;
     label {
       font-weight: 600;
     }
     .ant-input-number {
       width: 100%;
+      color: black;
     }
+  }
+  .ant-input {
+    color: black;
   }
   .start-session-button {
     margin-left: 60%;
