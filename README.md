@@ -8,7 +8,7 @@ run docker-compose up
 
 http://localhost:3000/
 
-# Manuel
+# Manual
 
 Docker ---> Mongodb
 
