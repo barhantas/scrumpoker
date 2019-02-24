@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ScrumAdmin from '../../components/ScrumAdmin';
 import { loadSprint, iamScrumMaster } from '../../actions';
-import { Input } from 'antd';
+import ScrumAdmin from '../../components/ScrumAdmin';
+import EnterSession from '../../components/EnterSessionForm';
 
 class ManageSprintPage extends React.Component {
   componentDidMount() {
@@ -10,16 +10,14 @@ class ManageSprintPage extends React.Component {
     iamScrumMaster();
   }
   render() {
-    const { sprint } = this.props;
+    const { sprint, location } = this.props;
+
     return (
-      <div className="scrum-master-page">
+      <div className="my-page-layout">
         {sprint._id ? (
           <ScrumAdmin {...this.props} />
         ) : (
-          <Input
-            placeholder="please enter the sprint name"
-            onPressEnter={(e) => this.props.loadSprint(e.target.value)}
-          />
+          <EnterSession location={location} />
         )}
       </div>
     );

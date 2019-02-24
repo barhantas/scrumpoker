@@ -25,7 +25,6 @@ exports.createSprint = (req, res) => {
       });
       newSprint.stories.push(story);
     });
-    io.emit("message", message);
     res.json(message);
   });
 };
@@ -125,35 +124,5 @@ exports.listAllSprints = async (req, res) => {
   Sprint.find({}, null, { sort: { created_date: -1 } }, (err, sprints) => {
     err && res.send(err);
     res.json(sprints);
-
-    //   sprints.forEach(sprint => {
-    //     Story.find({ sprint: sprint._id }, null, null, (err, stories) => {
-    //       sprint.stories = [...stories];
-    //     });
-    //   });
   });
-};
-
-exports.updateSprint = (req, res) => {
-  //   Sprint.findOneAndUpdate(
-  //     { _id: req.params.sprint },
-  //     req.body,
-  //     { new: true },
-  //     (err, message) => {
-  //       if (err) res.send(err);
-  //       res.json(message);
-  //     }
-  //   );
-};
-
-exports.deleteSprint = (req, res) => {
-  Sprint.remove(
-    {
-      _id: req.params.sprintId
-    },
-    (err, message) => {
-      if (err) res.send(err);
-      res.json({ message: "Sprint successfully deleted" });
-    }
-  );
 };

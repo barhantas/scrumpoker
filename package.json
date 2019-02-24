@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/barhantas/pinad.git"
+    "url": "git+https://github.com/barhantas/scrumpoker.git"
   },
   "author": "Baris Hantas",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/barhantas/pinad/issues"
+    "url": "https://github.com/barhantas/scrumpoker/issues"
   },
-  "homepage": "https://github.com/barhantas/pinad#readme",
+  "homepage": "https://github.com/barhantas/scrumpoker#readme",
   "devDependencies": {
     "nodemon": "^1.18.9"
   },

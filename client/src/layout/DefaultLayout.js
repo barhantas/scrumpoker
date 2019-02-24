@@ -1,7 +1,6 @@
 import './index.scss';
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { Layout } from 'antd';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { ROUTES } from './../routes';
@@ -30,7 +29,6 @@ class DefaultLayout extends React.Component {
                       <DefaultContent
                         content={route.component}
                         disableContentHeader={route.disableContentHeader}
-                        //collapsed={collapsed}
                         contentName={route.name}
                         {...props}
                       />

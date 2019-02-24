@@ -6,11 +6,7 @@ import StoryListTable from './StoryListTable';
 import ActiveStory from './ActiveStory';
 import io from 'socket.io-client';
 import { SOCKET_URL } from '../constants';
-import {
-  loadSprint,
-  captureStoryUpdate,
-  captureEstimationUpdate,
-} from '../actions';
+import { loadSprint, captureStoryUpdate } from '../actions';
 
 class ScrumAdmin extends React.Component {
   componentDidMount() {
@@ -22,15 +18,12 @@ class ScrumAdmin extends React.Component {
       console.log(story);
       captureStoryUpdate(story);
     });
-
-    socket.on('estimation', (estimation) => {
-      console.log(estimation);
-      captureEstimationUpdate(estimation);
-    });
   }
   render() {
+    const { sprint } = this.props;
     return (
       <div className="scrum-admin-panel">
+        <p>Sprint key : {sprint._id}</p>
         <Row gutter={32}>
           <Col span={12}>
             <p>Story List</p>

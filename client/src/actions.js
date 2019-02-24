@@ -20,8 +20,8 @@ export const createEstimation = (value) => {
   return { type: actionTypes.CREATE_ESTIMATION, value };
 };
 
-export const estimationCreated = () => {
-  return { type: actionTypes.ESTIMATION_CREATED };
+export const estimationCreated = (story, value) => {
+  return { type: actionTypes.ESTIMATION_CREATED, story, value };
 };
 
 export const finishStoryVoting = (finalValue) => {
@@ -34,10 +34,6 @@ export const storyVotingFinished = () => {
 
 export const captureStoryUpdate = (story) => {
   return { type: actionTypes.CAPTURE_STORY_UPDATE, story };
-};
-
-export const captureEstimationUpdate = (estimation) => {
-  return { type: actionTypes.CAPTURE_ESTIMATION_UPDATE, estimation };
 };
 
 export const loadSprints = () => {

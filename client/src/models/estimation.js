@@ -9,7 +9,7 @@ class Estimation extends RestBaseModel {
         story: {},
         sprintId: {},
       },
-      resultListField: (response) => response, //response.result,
+      resultListField: (response) => response,
       paths: {
         default: '/api/estimations',
       },

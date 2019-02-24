@@ -10,7 +10,7 @@ class Sprint extends RestBaseModel {
         stories: {},
         finalEstimation: {},
       },
-      resultListField: (response) => response, //response.result,
+      resultListField: (response) => response,
       paths: {
         default: '/api/sprints',
         finishStoryVoting: '/api/finishStoryVoting ',

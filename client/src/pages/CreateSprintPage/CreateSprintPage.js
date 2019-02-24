@@ -21,8 +21,8 @@ class CreateSprintPage extends React.Component {
     const { sprintCreating } = this.props;
     const { getFieldDecorator } = this.props.form;
     return (
-      <div className="create-sprint-page">
-        <Form className="create-session-form">
+      <div className="my-page-layout">
+        <Form className="my-form-layout">
           <Form.Item label="Session Name">
             {getFieldDecorator('sessionName', {
               rules: [

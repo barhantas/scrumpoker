@@ -10,14 +10,17 @@ body {
   height: 100%;
 }
 
-.create-sprint-page {
+.my-page-layout {
   margin: 5%;
   padding: 100px;
-  //background: #2b495d;
-  .create-session-form {
+  background: #2b495d;
+  .my-form-layout {
     label {
       font-weight: 600;
       color: #efefef;
+    }
+    .ant-input-number {
+      width: 100%;
     }
   }
   .start-session-button {
@@ -28,8 +31,6 @@ body {
     margin-top: 50px;
     color: white;
     .voting-pane {
-      //border: 2px solid #1892fd;
-      //border-radius: 3px;
       .poker-card {
         margin: 2%;
         width: 21%;
@@ -38,26 +39,33 @@ body {
     }
     .story-list-table {
       .ant-table-tbody {
-        //color: white;
+        color: white;
       }
     }
   }
 }
+
+.sprint-list-item {
+  margin: auto;
+  width: 100%;
+  color: white;
+}
+
+.finalize-story-button {
+  position: relative;
+  width: 100%;
+  background: #bae7ff;
+  margin-top: 6px;
+}
+
 .scrum-master-page {
   margin-top: 50px;
   color: white;
   .voting-pane {
-    //border: 2px solid #1892fd;
-    //border-radius: 3px;
     .poker-card {
       margin: 2%;
       width: 21%;
       min-height: 80px;
-    }
-  }
-  .story-list-table {
-    .ant-table-tbody {
-      //color: white;
     }
   }
 }

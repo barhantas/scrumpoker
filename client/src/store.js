@@ -1,18 +1,12 @@
 import { applyMiddleware, compose, createStore, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import simpleMiddleware from './middlewares/simple-middleware';
-
 import rootService from './service';
-
 import rootReducer from './reducer';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const enhancers = [
-  applyMiddleware(sagaMiddleware),
-  applyMiddleware(simpleMiddleware),
-];
+const enhancers = [applyMiddleware(sagaMiddleware)];
 
 const composeEnhancers =
   (process.env.NODE_ENV !== 'production' &&

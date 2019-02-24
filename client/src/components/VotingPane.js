@@ -24,7 +24,11 @@ class VotingPane extends React.Component {
     selectedCard: undefined,
   };
   render() {
-    const { createEstimation, activeStoryVoted, activeStory } = this.props;
+    const {
+      createEstimation,
+      activeStoryVoted,
+      activeStory,
+    } = this.props;
     const { selectedCard } = this.state;
     return (
       <div className="voting-pane">

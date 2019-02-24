@@ -5,6 +5,7 @@ const initialState = {
   sprintLoading: false,
 
   isScrumMaster: undefined,
+  scrumMasterEstimation: undefined,
 
   allSprints: [],
   sprintsLoading: false,
@@ -50,10 +51,12 @@ export default (state = initialState, action) => {
     case actionTypes.CREATE_ESTIMATION:
       return { ...state, estimationCreating: true };
     case actionTypes.ESTIMATION_CREATED:
+      console.log(action);
       return {
         ...state,
         estimationCreating: false,
         activeStoryVoted: true,
+        scrumMasterEstimation: state.isScrumMaster && action.value,
       };
     case actionTypes.FINISH_STORY_VOTING:
       return { ...state, storyVotingFinishing: true };
@@ -80,11 +83,6 @@ export default (state = initialState, action) => {
           activeStoryVoted: false,
         }),
       };
-
-    case actionTypes.CAPTURE_ESTIMATION_UPDATE:
-      return {
-        ...state,
-      };
     case actionTypes.I_AM_SCRUM_MASTER:
       return {
         ...state,
@@ -94,6 +92,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isScrumMaster: false,
+        scrumMasterEstimation: undefined,
       };
     default:
       return state;

@@ -12,7 +12,7 @@ class SprintListPage extends React.Component {
   render() {
     const { allSprints } = this.props;
     return (
-      <div className="create-sprint-page">
+      <div className="my-page-layout">
         <List
           itemLayout="horizontal"
           dataSource={allSprints}
@@ -28,7 +28,9 @@ class SprintListPage extends React.Component {
                       pathname: '/join-poker',
                       sprintId: sprint._id,
                     }}>
-                    {sprint.sessionName}
+                    <span className="sprint-list-item">
+                      {sprint.sessionName}
+                    </span>
                   </Link>
                 }
               />

@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Form, Button, Input } from 'antd';
+import { Form } from 'antd';
 import { loadSprint, iamDeveloper } from '../../actions';
 import ScrumAdmin from '../../components/ScrumAdmin';
+import EnterSessionForm from '../../components/EnterSessionForm';
 
 class JoinPokerPage extends React.Component {
   componentDidMount() {
@@ -16,41 +17,18 @@ class JoinPokerPage extends React.Component {
     form.validateFields((err, values) => {
       if (!err) {
         loadSprint(values.sessionId);
-        //form.resetFields();
       }
     });
   };
 
   render() {
-    const { getFieldDecorator } = this.props.form;
     const { sprint, location } = this.props;
     return (
-      <div className="create-sprint-page">
+      <div className="my-page-layout">
         {sprint._id ? (
           <ScrumAdmin {...this.props} />
         ) : (
-          <React.Fragment>
-            <Form className="create-session-form">
-              <Form.Item label="Session ID">
-                {getFieldDecorator('sessionId', {
-                  initialValue: location.sprintId,
-                  rules: [
-                    {
-                      required: true,
-                      max: 200,
-                    },
-                  ],
-                })(<Input placeholder="Session ID" />)}
-              </Form.Item>
-            </Form>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="start-session-button"
-              onClick={this.handleSubmit}>
-              Enter Session
-            </Button>
-          </React.Fragment>
+          <EnterSessionForm location={location} />
         )}
       </div>
     );

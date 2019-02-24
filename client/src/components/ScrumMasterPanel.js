@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Input } from 'antd';
+import { Button, Input, Row } from 'antd';
 import { finishStoryVoting } from '../actions';
 
 class ScrumMasterPanel extends React.Component {
@@ -9,36 +9,53 @@ class ScrumMasterPanel extends React.Component {
     finalValue: '',
   };
   render() {
-    const { activeStory, finishStoryVoting } = this.props;
+    const {
+      activeStory,
+      finishStoryVoting,
+      scrumMasterEstimation,
+      sprint,
+    } = this.props;
     const { finalValue } = this.state;
     const buttonText = activeStory
-      ? `End Voting for ${activeStory.name}`
-      : 'Estimation finished';
+      ? `Finish Voting for ${activeStory.name}`
+      : 'Sprint Estimation Finished';
     return (
       <div className="scrum-master-panel">
-        {activeStory && (
-          <React.Fragment>
-            {`${activeStory.name} is active`}
-            {activeStory.estimations.map((estimation, index) => (
-              <p key={index}>{`voter ${index} : ${estimation.value}`}</p>
-            ))}
-            <p>scrum master: 13</p>
-          </React.Fragment>
-        )}
-        <Input
-          disabled={!activeStory}
-          placeholder="Final Score"
-          value={finalValue}
-          onChange={(e) => this.setState({ finalValue: e.target.value })}
-        />
-        <Button
-          onClick={() => {
-            finishStoryVoting(finalValue);
-            this.setState({ finalValue: '' });
-          }}
-          disabled={!activeStory || !finalValue}>
-          {buttonText}
-        </Button>
+        <Row>
+          {activeStory && (
+            <React.Fragment>
+              {`You are voting for story : ${activeStory.name}`}
+              {activeStory.estimations.map(
+                (estimation, index) =>
+                  index < sprint.numberOfVoters && (
+                    <p key={index}>{`voter ${index + 1} : ${
+                      estimation.value
+                    }`}</p>
+                  )
+              )}
+              <p>Scrum master: {scrumMasterEstimation || 'Not Voted'}</p>
+            </React.Fragment>
+          )}
+        </Row>
+        <Row>
+          <div className="finalize-session-pane">
+            <Input
+              disabled={!activeStory}
+              placeholder="Final Score"
+              value={finalValue}
+              onChange={(e) => this.setState({ finalValue: e.target.value })}
+            />
+            <Button
+              className="finalize-story-button"
+              onClick={() => {
+                finishStoryVoting(finalValue);
+                this.setState({ finalValue: '' });
+              }}
+              disabled={!activeStory || !finalValue}>
+              {buttonText}
+            </Button>
+          </div>
+        </Row>
       </div>
     );
   }
@@ -47,10 +64,15 @@ class ScrumMasterPanel extends React.Component {
 ScrumMasterPanel.propTypes = {
   finishStoryVoting: PropTypes.func,
   activeStory: PropTypes.object,
+  sprint: PropTypes.object,
+  scrumMasterEstimation: PropTypes.string,
 };
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    sprint: state.rootReducer.sprint,
+    scrumMasterEstimation: state.rootReducer.scrumMasterEstimation,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => ({

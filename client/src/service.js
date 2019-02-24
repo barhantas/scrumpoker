@@ -46,7 +46,7 @@ export function* createEstimation(action) {
         message.error(err.response.detail);
       })
   );
-  yield put(estimationCreated(res && res.response));
+  yield put(estimationCreated(res && res.response, action.value));
 }
 
 export function* finishStoryVoting(action) {
