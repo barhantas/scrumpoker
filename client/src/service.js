@@ -18,8 +18,7 @@ export function* createSprint(action) {
     sprintInstance
       .save({ model: sprintInstance })
       .then((response) => {
-        console.log(response);
-        action.callback('sprints/' + response.response._id);
+        action.callback('sprints');
         return response;
       })
       .catch((err) => {

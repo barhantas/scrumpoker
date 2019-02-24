@@ -47,3 +47,11 @@ export const loadSprints = () => {
 export const sprintsLoaded = (sprints) => {
   return { type: actionTypes.SPRINTS_LOADED, sprints };
 };
+
+export const iamScrumMaster = () => {
+  return { type: actionTypes.I_AM_SCRUM_MASTER };
+};
+
+export const iamDeveloper = () => {
+  return { type: actionTypes.I_AM_DEVELOPER };
+};

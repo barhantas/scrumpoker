@@ -9,26 +9,39 @@ class ActiveStory extends React.Component {
   render() {
     const stories = (this.props.sprint || {}).stories || [];
     const activeStory = stories.find((story) => story.status === 'Active');
+    const { isScrumMaster } = this.props;
     return (
       <div className="active-story">
-        <Row>
-          <Col span={12}>
-            <VotingPane activeStory={activeStory} />
-          </Col>
-          <Col span={12}>
-            <ScrumMasterPanel activeStory={activeStory} />
-          </Col>
-        </Row>
+        {isScrumMaster ? (
+          <Row>
+            <Col span={12}>
+              <VotingPane activeStory={activeStory} />
+            </Col>
+            <Col span={12}>
+              <ScrumMasterPanel activeStory={activeStory} />
+            </Col>
+          </Row>
+        ) : (
+          <Row>
+            <Col span={24}>
+              <VotingPane activeStory={activeStory} />
+            </Col>
+          </Row>
+        )}
       </div>
     );
   }
 }
 
-ActiveStory.propTypes = { sprint: PropTypes.object };
+ActiveStory.propTypes = {
+  sprint: PropTypes.object,
+  isScrumMaster: PropTypes.bool,
+};
 
 const mapStateToProps = (state) => {
   return {
     sprint: state.rootReducer.sprint,
+    isScrumMaster: state.rootReducer.isScrumMaster,
   };
 };
 

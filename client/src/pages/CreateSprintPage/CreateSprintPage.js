@@ -9,7 +9,6 @@ const { TextArea } = Input;
 class CreateSprintPage extends React.Component {
   handleSubmit = (e) => {
     const { form, createSprint } = this.props;
-    console.log(this.props);
     e.preventDefault();
     form.validateFields((err, values) => {
       if (!err) {

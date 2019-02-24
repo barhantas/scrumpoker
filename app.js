@@ -17,7 +17,6 @@ const server = app.listen(8810);
 const io = require("socket.io").listen(server, { origins: "*:*" });
 
 io.on("connection", listener => {
-  //console.log(listener);
   console.log("a user is connected");
 });
 module.exports = io;

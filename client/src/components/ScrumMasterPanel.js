@@ -16,15 +16,18 @@ class ScrumMasterPanel extends React.Component {
       : 'Estimation finished';
     return (
       <div className="scrum-master-panel">
-        {activeStory && `${activeStory.name} is active`}
-        <p>voter 1 : 13</p>
-        <p>voter 2 : 21</p>
-        <p>voter 3 : 13</p>
-        <p>voter 4 : 21</p>
-        <p>scrum master: 13</p>
+        {activeStory && (
+          <React.Fragment>
+            {`${activeStory.name} is active`}
+            {activeStory.estimations.map((estimation, index) => (
+              <p key={index}>{`voter ${index} : ${estimation.value}`}</p>
+            ))}
+            <p>scrum master: 13</p>
+          </React.Fragment>
+        )}
         <Input
           disabled={!activeStory}
-          label="Final Score"
+          placeholder="Final Score"
           value={finalValue}
           onChange={(e) => this.setState({ finalValue: e.target.value })}
         />

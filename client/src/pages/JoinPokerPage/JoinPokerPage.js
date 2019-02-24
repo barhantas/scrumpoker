@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import { Form, Button, Input } from 'antd';
 import io from 'socket.io-client';
 import { SOCKET_URL } from '../../constants';
-import { loadSprint } from '../../actions';
+import { loadSprint, iamDeveloper } from '../../actions';
 import ScrumAdmin from '../../components/ScrumAdmin';
 
 class JoinPokerPage extends React.Component {
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.iamDeveloper();
+  }
 
   handleSubmit = (e) => {
     const { form, loadSprint } = this.props;
@@ -31,8 +33,7 @@ class JoinPokerPage extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { sprint } = this.props;
-
+    const { sprint, location } = this.props;
     return (
       <div className="create-sprint-page">
         {sprint._id ? (
@@ -42,6 +43,7 @@ class JoinPokerPage extends React.Component {
             <Form className="create-session-form">
               <Form.Item label="Session ID">
                 {getFieldDecorator('sessionId', {
+                  initialValue: location.sprintId,
                   rules: [
                     {
                       required: true,
@@ -75,6 +77,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   loadSprint: (sessionId) => dispatch(loadSprint(sessionId)),
+  iamDeveloper: () => dispatch(iamDeveloper()),
 });
 
 export default connect(

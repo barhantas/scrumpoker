@@ -79,7 +79,7 @@ exports.createEstimation = (req, res) => {
   const storyId = req.body.story;
   const value = req.body.value;
 
-  Story.findByIdAndUpdate(storyId, {}, { new: true }, (err, story) => {
+  Story.findByIdAndUpdate(storyId, {}, { new: true }, async (err, story) => {
     if (err) res.send(err);
     const estimation = new Estimation({
       value: value,
@@ -89,8 +89,17 @@ exports.createEstimation = (req, res) => {
       if (err) return handleError(err);
     });
     story.estimations.push(estimation);
-    io.emit("story", story);
-    res.json(story);
+    await story.save();
+
+    Estimation.find({ story: storyId }, null, null, (err, estimations) => {
+      if (err) {
+        res.status(400);
+        res.send(err);
+      }
+      story.estimations = [...estimations];
+      io.emit("story=" + storyId, story);
+      res.json(story);
+    });
   });
 };
 

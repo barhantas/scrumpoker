@@ -26,7 +26,7 @@ export const ROUTES = [
   },
   {
     icon: 'dashboard',
-    path: '/sprints/:sprintId',
+    path: '/sprints',
     name: 'Manage Sprint',
     component: ManageSprintPage,
     disableSider: false,

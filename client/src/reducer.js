@@ -1,9 +1,10 @@
 import actionTypes from './action-types';
 
 const initialState = {
-  currentStep: 0,
   sprint: {},
   sprintLoading: false,
+
+  isScrumMaster: undefined,
 
   allSprints: [],
   sprintsLoading: false,
@@ -27,7 +28,7 @@ export default (state = initialState, action) => {
         ...state,
         sprint: action.sprint,
         sprintLoading: false,
-        activeStory: activeStory,
+        activeStoryId: activeStory._id,
       };
     case actionTypes.LOAD_SPRINTS:
       return { ...state, sprintsLoading: true };
@@ -44,7 +45,7 @@ export default (state = initialState, action) => {
         ...state,
         sprint: action.sprint,
         sprintCreating: false,
-        currentStep: 1,
+        isScrumMaster: true,
       };
     case actionTypes.CREATE_ESTIMATION:
       return { ...state, estimationCreating: true };
@@ -74,8 +75,8 @@ export default (state = initialState, action) => {
           ...state.sprint,
           stories: [...state.sprint.stories],
         },
-        ...(state.activeStory._id !== action.story._id && {
-          activeStory: { ...action.story },
+        ...(state.activeStoryId !== action.story._id && {
+          activeStoryId: action.story._id,
           activeStoryVoted: false,
         }),
       };
@@ -83,6 +84,16 @@ export default (state = initialState, action) => {
     case actionTypes.CAPTURE_ESTIMATION_UPDATE:
       return {
         ...state,
+      };
+    case actionTypes.I_AM_SCRUM_MASTER:
+      return {
+        ...state,
+        isScrumMaster: true,
+      };
+    case actionTypes.I_AM_DEVELOPER:
+      return {
+        ...state,
+        isScrumMaster: false,
       };
     default:
       return state;

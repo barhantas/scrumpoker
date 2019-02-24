@@ -23,7 +23,11 @@ class SprintListPage extends React.Component {
                   <Avatar src="https://static.thenounproject.com/png/11723-200.png" />
                 }
                 title={
-                  <Link to={'/sprints/' + sprint._id}>
+                  <Link
+                    to={{
+                      pathname: '/join-poker',
+                      sprintId: sprint._id,
+                    }}>
                     {sprint.sessionName}
                   </Link>
                 }

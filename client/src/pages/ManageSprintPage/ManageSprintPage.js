@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ScrumAdmin from '../../components/ScrumAdmin';
-import { loadSprint } from '../../actions';
+import { loadSprint, iamScrumMaster } from '../../actions';
 import { Input } from 'antd';
 
 class ManageSprintPage extends React.Component {
   componentDidMount() {
-    const { sprintId } = this.props.match.params;
-    this.props.loadSprint(sprintId);
-    this.props.history.push(sprintId);
+    const { iamScrumMaster } = this.props;
+    iamScrumMaster();
   }
   render() {
     const { sprint } = this.props;
@@ -35,6 +34,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   loadSprint: (id) => dispatch(loadSprint(id)),
+  iamScrumMaster: () => dispatch(iamScrumMaster()),
 });
 
 export default connect(

@@ -6,21 +6,21 @@ import StoryListTable from './StoryListTable';
 import ActiveStory from './ActiveStory';
 import io from 'socket.io-client';
 import { SOCKET_URL } from '../constants';
-import { loadSprint,captureStoryUpdate, captureEstimationUpdate } from '../actions';
+import {
+  loadSprint,
+  captureStoryUpdate,
+  captureEstimationUpdate,
+} from '../actions';
 
 class ScrumAdmin extends React.Component {
   componentDidMount() {
-    // const { loadSprint } = this.props;
-    // const { sprintId } = this.props.match.params;
-    //loadSprint(sprintId);
-
-    const { captureStoryUpdate } = this.props;
+    const { captureStoryUpdate, activeStoryId } = this.props;
     const socket = io(SOCKET_URL);
 
     socket.on('connect', () => {
       //console.log('hi');
     });
-    socket.on('story', (story) => {
+    socket.on('story=' + activeStoryId, (story) => {
       console.log(story);
       captureStoryUpdate(story);
     });
@@ -49,12 +49,15 @@ class ScrumAdmin extends React.Component {
 
 ScrumAdmin.propTypes = {
   createSprint: PropTypes.string,
+  activeStoryId: PropTypes.string,
   captureStoryUpdate: PropTypes.func,
   loadSprint: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    activeStoryId: state.rootReducer.activeStoryId,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => ({
