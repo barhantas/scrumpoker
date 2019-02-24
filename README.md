@@ -5,6 +5,7 @@ A simple example of scrum poker planning app
 # Docker
 
 run docker-compose up
+http://localhost:3000/
 
 # Manuel
 
