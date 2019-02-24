@@ -1,0 +1,32 @@
+{
+  "name": "pinad",
+  "version": "0.0.1",
+  "description": "pinad node server",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barhantas/pinad.git"
+  },
+  "author": "Baris Hantas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barhantas/pinad/issues"
+  },
+  "homepage": "https://github.com/barhantas/pinad#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "connect": "^3.6.6",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.9",
+    "socket.io": "^2.2.0",
+    "swagger-ui-express": "^4.0.2"
+  }
+}

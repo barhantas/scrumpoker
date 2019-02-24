@@ -1,0 +1,31 @@
+.layout {
+  //min-height: 100%;
+  min-block-size: 100vh;
+}
+.layout-content {
+  background: #afafaf;
+  //height: 94vh;
+  
+}
+
+.layout-footer {
+  height: 6%;
+  text-align: center;
+  vertical-align: middle;
+  padding: 20px 0;
+}
+
+.sider-collapser {
+  width: 100%;
+  font-size: 1.5em;
+  text-align: left;
+  padding-left: 10px;
+  > .anticon {
+    cursor: pointer;
+    padding: 15px;
+    color: rgba(255, 255, 255, 0.65);
+    &:hover {
+      color: #fff;
+    }
+  }
+}

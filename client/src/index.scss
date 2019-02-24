@@ -1,0 +1,63 @@
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100%;
+}
+#root {
+  height: 100%;
+}
+
+.create-sprint-page {
+  margin: 5%;
+  padding: 100px;
+  //background: #2b495d;
+  .create-session-form {
+    label {
+      font-weight: 600;
+      color: #efefef;
+    }
+  }
+  .start-session-button {
+    margin-left: 87%;
+    width: 13%;
+  }
+  .scrum-admin-panel {
+    margin-top: 50px;
+    color: white;
+    .voting-pane {
+      //border: 2px solid #1892fd;
+      //border-radius: 3px;
+      .poker-card {
+        margin: 2%;
+        width: 21%;
+        min-height: 80px;
+      }
+    }
+    .story-list-table {
+      .ant-table-tbody {
+        //color: white;
+      }
+    }
+  }
+}
+.scrum-master-page {
+  margin-top: 50px;
+  color: white;
+  .voting-pane {
+    //border: 2px solid #1892fd;
+    //border-radius: 3px;
+    .poker-card {
+      margin: 2%;
+      width: 21%;
+      min-height: 80px;
+    }
+  }
+  .story-list-table {
+    .ant-table-tbody {
+      //color: white;
+    }
+  }
+}
