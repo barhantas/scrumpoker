@@ -12,12 +12,11 @@ body {
 
 .my-page-layout {
   margin: 5%;
-  padding: 100px;
-  background: #2b495d;
+  color: black;
+  background: white;
   .my-form-layout {
     label {
       font-weight: 600;
-      color: #efefef;
     }
     .ant-input-number {
       width: 100%;
@@ -26,10 +25,11 @@ body {
   .start-session-button {
     margin-left: 60%;
     width: 40%;
+    min-height: 40px;
+    font-weight: 600;
   }
   .scrum-admin-panel {
     margin-top: 50px;
-    color: white;
     .voting-pane {
       .poker-card {
         margin: 2%;
@@ -38,9 +38,8 @@ body {
       }
     }
     .story-list-table {
-      pointer-events: none;
       .ant-table-tbody {
-        color: white;
+        color: black;
       }
     }
   }
@@ -49,7 +48,7 @@ body {
 .sprint-list-item {
   margin: auto;
   width: 100%;
-  color: white;
+  color: black;
 }
 
 .finalize-story-button {
@@ -57,6 +56,8 @@ body {
   width: 100%;
   background: #bae7ff;
   margin-top: 6px;
+  font-weight: 600;
+  min-height: 40px;
 }
 
 .scrum-master-page {
@@ -67,6 +68,13 @@ body {
       margin: 2%;
       width: 21%;
       min-height: 80px;
+      background: #4e7ade;
+      color: white;
     }
   }
+}
+
+.ant-layout,
+.ant-layout * {
+  border-color: black;
 }
