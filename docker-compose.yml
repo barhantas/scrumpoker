@@ -1,20 +1,15 @@
 version: "3"
 services:
   app:
-    image: node:alpine
-    volumes:
-      - ./:/app
-    working_dir: /app
+    build:
+      context: .
     depends_on:
       - mongo
     environment:
       NODE_ENV: development
     ports:
-      - "8000:8000"
+      - "8800:8000"
       - "8810:8810"
-    command: >
-      sh -c "npm i &&
-             npm start"
   client:
     build:
       context: ./client/
