@@ -19,14 +19,15 @@ git clone git@github.com:barhantas/scrumpoker.git
 ```
 
 ## Install
+Before run project for development you need to install packages with:
+(If you are going to run with docker you can skip this steps.)
 
 ### Server
 ```shell
 npm i
 ```
 
-### Client App
-> Please give your host machine IP Adress in `client/src/constants/index.js` as `ENDPOINT_URL` and `SOCKET_URL`, if you want to run project with docker.
+### Client
 
 ```shell
 cd client
@@ -34,18 +35,21 @@ npm i
 ```
 
 ## Development
-### Node App
+Start Server and Client seperately with :
+
+### Server
 ```shell
 npm start
 ```
 
-### Frontend App
+### Client
 ```shell
 cd client
 npm start
 ```
 
 ## Deployment
+> Please give your host machine IP Adress in `client/src/constants/index.js` as `ENDPOINT_URL` and `SOCKET_URL`, if you want to run project with docker.
 
 ### Run as a Docker container
 
