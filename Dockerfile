@@ -1,23 +1,16 @@
-FROM node:9.4.0-alpine as client
-
-WORKDIR /usr/app/client/
-COPY client/package*.json ./
-RUN npm install -qy
-COPY client/ ./
-RUN npm run build
-
-
-# Setup the server
-
 FROM node:9.4.0-alpine
 
-WORKDIR /usr/app/
-COPY --from=client /usr/app/client/build/ ./client/build/
+#ARG proxy=http://10.122.123.23:3129/
+#ENV HTTP_PROXY=${proxy} HTTPS_PROXY=${proxy} http_proxy=${proxy} https_proxy=${proxy}
+#RUN npm config set proxy ${HTTP_PROXY}
+#RUN npm config set https-proxy ${HTTP_PROXY}
+#RUN npm config set registry http://registry.npmjs.org/
 
-WORKDIR /usr/app/server/
-COPY server/package*.json ./
+
+WORKDIR /app
+COPY package*.json ./
+COPY . /app
 RUN npm install -qy
-COPY server/ ./
 
 ENV PORT 8000
 
