@@ -17,50 +17,52 @@ with SSH:
 ```shell
 git clone git@github.com:barhantas/scrumpoker.git
 ```
+## FOR RUN WITH NODE
 
-## Install
+### Install Node Packages
 Before run project for development you need to install packages with:
-(If you are going to run with docker you can skip this steps.)
 
-### Server
+*Server*
 ```shell
 npm i
 ```
 
-### Client
+*Client*
 
 ```shell
 cd client
 npm i
 ```
 
-## Development
+### Start Project
 Start Server and Client seperately with :
 
-### Server
+*Server*
 ```shell
 npm start
 ```
 
-### Client
+*Client*
 ```shell
 cd client
 npm start
 ```
 
-## Deployment
-> Please give your host machine IP Adress in `client/src/constants/index.js` as `ENDPOINT_URL` and `SOCKET_URL`, if you want to run project with docker.
 
-### Run as a Docker container
 
-> Server running on  `ENDPOINT_URL:8800`
+## FOR RUN WITH DOCKER
 
-> Server socket  `SOCKET_URL:8810`
-
-> Client runnig on `ENDPOINT_URL:3000`
+> Please give your host machine IP Adress in `client/src/constants/index.js` as `IP`, if you want to run project with *docker*.
 
 > work in project root folder
 
 ```shell
 docker-compose up --build -d
 ```
+
+> Server running on  `IP:8800`
+
+> Server socket  `IP:8810`
+
+> Client running on `IP:3000`
+
