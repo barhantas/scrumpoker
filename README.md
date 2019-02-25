@@ -19,6 +19,9 @@ git clone git@github.com:barhantas/scrumpoker.git
 ```
 ## FOR RUN WITH NODE
 
+### Prerequisites
+Make sure that you have Node,NPM and MongoDB installed.
+
 ### Install Node Packages
 Before run project for development you need to install packages with:
 
