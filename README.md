@@ -55,8 +55,13 @@ npm start
 
 ## FOR RUN WITH DOCKER
 
-> Please give your host machine IP Adress in `client/src/constants/index.js` as `IP`, if you want to run project with *docker*.
+### Prerequisites
+Make sure that you do not need any proxy configuration.
+If you have to set proxy configuration,please uncommet proxy config part in both DockerFiles.
 
+Please give your host machine IP Adress in `client/src/constants/index.js` as `IP`.
+
+### RUN DOCKER
 > work in project root folder
 
 ```shell
