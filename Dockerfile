@@ -16,4 +16,4 @@ ENV PORT 8000
 
 EXPOSE 8000
 
-CMD ["npm", "start"]
+CMD until nc -z mongo 27017; do sleep 1; done; npm start 

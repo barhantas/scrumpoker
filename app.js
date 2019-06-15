@@ -22,8 +22,20 @@ routes(app);
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb://mongo/scrumpokerdb", { useNewUrlParser: true });
+mongoose.connect("mongodb://mongo:27017/scrumpokerdb", { 
+	useNewUrlParser: true,
+	server: {
+		auto_reconnect: true,
+		reconnectInterval: 9, 
+		reconnectTries: 9,
+		autoReconnect: true, 
+	},
+});
 
 app.listen(port);
 
 console.log("scrum-poker server started on: " + port);
+
+require("dns").lookup("mongo", (e, a, f) => {
+	console.log("lookup", e, a, f)
+})

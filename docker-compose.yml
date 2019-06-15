@@ -1,4 +1,8 @@
 version: "3"
+
+networks:
+  myappnet:
+
 services:
   app:
     build:
@@ -10,6 +14,8 @@ services:
     ports:
       - "8800:8000"
       - "8810:8810"
+    networks:
+      - myappnet
   client:
     build:
       context: ./client/
@@ -21,10 +27,19 @@ services:
       - app
     ports:
       - "3000:3000"
+    networks:
+      - myappnet
   mongo:
     container_name: scrum-poker-mongo
+    healthcheck:
+      test: mongostat -n1
+      retries: 5
+      timeout: 10s
+      interval: 10s
     image: mongo
     volumes:
       - ./data:/data/db
     ports:
       - "27017:27017"
+    networks:
+      - myappnet
