@@ -1,4 +1,5 @@
 # Scrum Poker App
+![](https://media.giphy.com/media/mC1BL200zCY38Dyjoa/giphy.gif)
 
 A simple example of scrum poker planning app
 
