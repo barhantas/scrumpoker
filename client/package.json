@@ -24,7 +24,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "node-sass": "^4.9.3",
+    "node-sass": "^7.0.0",
     "react-app-rewired": "^2.1.0",
     "sass-loader": "^7.1.0"
   },
